@@ -7,26 +7,30 @@
 <link href="https://fonts.googleapis.com/css2?family=Zen+Kaku+Gothic+New:wght@300;400;500;700&family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
 <style>
 :root {
-  --bg: #f2f0eb;
+  --bg: #f0ede8;
   --surface: #ffffff;
-  --surface2: #f7f5f0;
-  --border: #e0dbd0;
-  --text: #2a2418;
-  --text2: #6b6150;
-  --text3: #a89e8a;
-  --olive: #4a5e38;
-  --olive2: #5a7244;
-  --olive3: #3a4a2c;
-  --olive-light: #eaf0e4;
-  --olive-mid: #d0ddc4;
-  --accent: #7a9a5a;
-  --earth: #8a7a5a;
-  --red: #b84a3a;
+  --surface2: #f7f5f2;
+  --border: #e2ddd6;
+  --text: #1a2744;
+  --text2: #4a5470;
+  --text3: #9aa0b8;
+  --olive: #1a2744;
+  --olive2: #2e4070;
+  --olive3: #111e36;
+  --olive-light: #eaeef8;
+  --olive-mid: #c8d0e8;
+  --accent: #e8a030;
+  --earth: #c8881a;
+  --red: #c04040;
   --red2: #fcecea;
-  --green-inc: #2e6e4a;
-  --green-inc2: #e4f0eb;
-  --shadow: 0 2px 12px rgba(42,36,24,0.08);
-  --shadow-md: 0 4px 20px rgba(42,36,24,0.12);
+  --green-inc: #2e7a50;
+  --green-inc2: #e4f2eb;
+  --shadow: 0 2px 12px rgba(26,39,68,0.10);
+  --shadow-md: 0 4px 20px rgba(26,39,68,0.15);
+  --farm: #2e5a3a;
+  --farm2: #1e4a2a;
+  --farm-light: #e4f0e8;
+  --farm-mid: #b8d4c0;
 }
 * { margin:0; padding:0; box-sizing:border-box; -webkit-tap-highlight-color:transparent; }
 body { font-family:'Zen Kaku Gothic New',sans-serif; background:var(--bg); color:var(--text); min-height:100vh; }
@@ -41,7 +45,7 @@ body { font-family:'Zen Kaku Gothic New',sans-serif; background:var(--bg); color
 /* TABS */
 .tabs { display:flex; background:var(--olive3); flex-shrink:0; }
 .tab { flex:1; padding:10px 4px; text-align:center; font-size:12px; font-weight:600; color:rgba(255,255,255,0.45); cursor:pointer; border-bottom:2px solid transparent; transition:all 0.2s; letter-spacing:0.3px; }
-.tab.active { color:#fff; border-bottom-color:var(--accent); }
+.tab.active { color:#fff; border-bottom-color:#e8a030; }
 
 /* CONTENT */
 .content { flex:1; overflow-y:auto; padding:14px; display:none; }
@@ -66,17 +70,17 @@ body { font-family:'Zen Kaku Gothic New',sans-serif; background:var(--bg); color
 
 .cat-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:6px; }
 .chip { padding:8px 4px; text-align:center; background:var(--surface2); border:1.5px solid var(--border); border-radius:8px; font-size:11px; font-weight:600; cursor:pointer; color:var(--text2); transition:all 0.15s; user-select:none; }
-.chip.sel { background:var(--olive-light); border-color:var(--accent); color:var(--olive2); }
+.chip.sel { background:#fff8ec; border-color:var(--accent); color:#a06010; }
 .chip.add-chip { border-style:dashed; color:var(--text3); font-size:16px; }
 
 .pay-row { display:flex; gap:6px; flex-wrap:wrap; }
 .pay-chip { padding:6px 11px; background:var(--surface2); border:1.5px solid var(--border); border-radius:20px; font-size:12px; cursor:pointer; color:var(--text2); transition:all 0.15s; user-select:none; }
-.pay-chip.sel { background:var(--olive-light); border-color:var(--accent); color:var(--olive2); font-weight:700; }
+.pay-chip.sel { background:#fff8ec; border-color:var(--accent); color:#a06010; font-weight:700; }
 
 .otosan-row { display:flex; align-items:center; gap:10px; padding:10px 13px; background:#f5f0e8; border:1.5px solid #e0d5c0; border-radius:10px; margin-top:-5px; margin-bottom:13px; }
 .toggle { width:40px; height:22px; background:var(--border); border-radius:11px; position:relative; cursor:pointer; flex-shrink:0; transition:background 0.2s; }
 .toggle::after { content:''; position:absolute; width:18px; height:18px; background:#fff; border-radius:50%; top:2px; left:2px; transition:left 0.2s; box-shadow:0 1px 3px rgba(0,0,0,0.2); }
-.toggle.on { background:var(--earth); }
+.toggle.on { background:var(--accent); }
 .toggle.on::after { left:20px; }
 .otosan-lbl { font-size:12px; color:var(--text2); line-height:1.4; }
 .otosan-lbl strong { color:var(--earth); }
@@ -145,7 +149,7 @@ body { font-family:'Zen Kaku Gothic New',sans-serif; background:var(--bg); color
 .year-nav { display:flex; align-items:center; justify-content:space-between; background:var(--surface); border-radius:14px; padding:10px 15px; margin-bottom:12px; box-shadow:var(--shadow); border:1px solid var(--border); }
 .year-lbl { font-family:'Nunito',sans-serif; font-size:17px; font-weight:800; }
 
-.annual-card { background:linear-gradient(135deg,var(--olive3) 0%,var(--olive) 50%,var(--accent) 100%); border-radius:16px; padding:20px; margin-bottom:12px; color:#fff; box-shadow:0 4px 20px rgba(42,36,24,0.2); }
+.annual-card { background:linear-gradient(135deg,#111e36 0%,#1a2744 55%,#2e4070 100%); border-radius:16px; padding:20px; margin-bottom:12px; color:#fff; box-shadow:0 4px 20px rgba(42,36,24,0.2); }
 .annual-card .a-lbl { font-size:11px; opacity:0.7; font-weight:600; letter-spacing:0.5px; margin-bottom:5px; }
 .annual-card .a-val { font-family:'Nunito',sans-serif; font-size:30px; font-weight:800; }
 .annual-sub { display:flex; gap:14px; margin-top:12px; padding-top:12px; border-top:1px solid rgba(255,255,255,0.2); }
@@ -230,6 +234,7 @@ select.inp { appearance:none; }
     <div class="tab active" id="tab0" onclick="showTab(0)">入力</div>
     <div class="tab" id="tab1" onclick="showTab(1)">月別</div>
     <div class="tab" id="tab2" onclick="showTab(2)">年間</div>
+    <div class="tab" id="tab3" onclick="showTab(3)">農業</div>
   </div>
 
   <!-- TAB0: 入力 -->
@@ -364,6 +369,96 @@ select.inp { appearance:none; }
     <button class="export-btn" onclick="exportCSV()">⬇ 年間データをCSVで書き出す</button>
     <div class="pad"></div>
   </div>
+
+  <!-- TAB3: 農業 -->
+  <div class="content" id="c3">
+    <div class="type-toggle">
+      <div class="type-btn exp-active" id="fBtnExp" onclick="setFarmType('expense')">支出</div>
+      <div class="type-btn" id="fBtnInc" onclick="setFarmType('income')">収入</div>
+    </div>
+
+    <!-- 農業支出フォーム -->
+    <div class="form-card" id="farmExpForm">
+      <div class="form-row">
+        <label class="lbl">日付</label>
+        <input class="inp" type="date" id="fExpDate">
+      </div>
+      <div class="form-row">
+        <label class="lbl">カテゴリ</label>
+        <div class="cat-grid" id="fExpCatGrid"></div>
+      </div>
+      <div class="form-row">
+        <label class="lbl">品目・店名</label>
+        <input class="inp" type="text" id="fExpItem" placeholder="例：トマト苗 / 農協">
+      </div>
+      <div class="form-row">
+        <label class="lbl">金額</label>
+        <div class="inp-amount-wrap">
+          <span class="yen">¥</span>
+          <input class="inp" type="number" id="fExpAmount" placeholder="0" min="0">
+        </div>
+      </div>
+      <div class="form-row">
+        <label class="lbl">支払い方法</label>
+        <div class="pay-row" id="fExpPayRow"></div>
+      </div>
+      <button class="submit-btn" onclick="submitFarmExp()">追加する</button>
+    </div>
+
+    <!-- 農業収入フォーム -->
+    <div class="form-card" id="farmIncForm" style="display:none">
+      <div class="form-row">
+        <label class="lbl">日付</label>
+        <input class="inp" type="date" id="fIncDate">
+      </div>
+      <div class="form-row">
+        <label class="lbl">カテゴリ</label>
+        <div class="cat-grid" id="fIncCatGrid"></div>
+      </div>
+      <div class="form-row">
+        <label class="lbl">品目・内容</label>
+        <input class="inp" type="text" id="fIncItem" placeholder="例：ズッキーニ販売">
+      </div>
+      <div class="form-row">
+        <label class="lbl">金額</label>
+        <div class="inp-amount-wrap">
+          <span class="yen">¥</span>
+          <input class="inp" type="number" id="fIncAmount" placeholder="0" min="0">
+        </div>
+      </div>
+      <button class="submit-btn" onclick="submitFarmInc()">追加する</button>
+    </div>
+
+    <!-- 月別農業収支 -->
+    <div class="month-nav">
+      <div class="nav-btn" onclick="changeFarmMonth(-1)">‹</div>
+      <div class="month-lbl" id="farmMonthLbl"></div>
+      <div class="nav-btn" onclick="changeFarmMonth(1)">›</div>
+    </div>
+    <div class="summary-row">
+      <div class="s-card inc"><div class="s-lbl">収入</div><div class="s-val" id="fSumInc">¥0</div></div>
+      <div class="s-card exp"><div class="s-lbl">支出</div><div class="s-val" id="fSumExp">¥0</div></div>
+      <div class="s-card bal"><div class="s-lbl">収支</div><div class="s-val" id="fSumBal">¥0</div></div>
+    </div>
+
+    <!-- 累計カード -->
+    <div class="annual-card" style="margin-bottom:12px;">
+      <div class="a-lbl">累計投資額（全期間）</div>
+      <div class="a-val" id="fTotalExp">¥0</div>
+      <div class="annual-sub">
+        <div class="annual-sub-item">累計収入<span id="fTotalInc">¥0</span></div>
+        <div class="annual-sub-item">累計収支<span id="fTotalBal">¥0</span></div>
+      </div>
+    </div>
+
+    <!-- 月別明細 -->
+    <div class="sec-lbl">今月の支出</div>
+    <div id="farmExpGroups"></div>
+    <div class="sec-lbl" style="margin-top:14px">今月の収入</div>
+    <div id="farmIncGroups"></div>
+    <div class="pad"></div>
+  </div>
+
 </div>
 
 <!-- EDIT MODAL -->
@@ -410,9 +505,20 @@ let data = JSON.parse(localStorage.getItem('kakeibo_v2') || 'null') || {
   payMethods: ['JCB','楽天','Suica','現金','引落し','前払い','親父カード'],
   fixed: [],      // {id,cat,shop,item,amount,pay,otosan}
   budgets: {},    // {cat: amount}
+  farmExpenses: [],  // {id,date,cat,item,amount,pay}
+  farmIncomes: [],   // {id,date,cat,item,amount}
+  farmExpCats: ['種苗','肥料','農薬','資材','雑費'],
+  farmIncCats: ['その他'],  // カスタマイズ可
 };
 
 function save() { localStorage.setItem('kakeibo_v2', JSON.stringify(data)); }
+
+// 既存データに農業フィールドがない場合の初期化
+if (!data.farmExpenses) data.farmExpenses = [];
+if (!data.farmIncomes) data.farmIncomes = [];
+if (!data.farmExpCats) data.farmExpCats = ['種苗','肥料','農薬','資材','雑費'];
+if (!data.farmIncCats) data.farmIncCats = ['その他'];
+save();
 function uid() { return Date.now().toString(36) + Math.random().toString(36).slice(2,6); }
 function fmt(n) { return '¥' + Math.abs(n).toLocaleString(); }
 function fmtBal(n) { return (n >= 0 ? '+¥' : '-¥') + Math.abs(n).toLocaleString(); }
@@ -433,7 +539,7 @@ let editingType = null;
 
 // ===== TABS =====
 function showTab(n) {
-  for (let i=0;i<3;i++){
+  for (let i=0;i<4;i++){
     document.getElementById('c'+i).classList.remove('active');
     document.getElementById('tab'+i).classList.remove('active');
   }
@@ -443,6 +549,7 @@ function showTab(n) {
   if(n===0) initInputTab();
   if(n===1) renderMonth();
   if(n===2) renderYear();
+  if(n===3) initFarmTab();
 }
 
 // ===== INPUT TAB =====
@@ -805,23 +912,28 @@ function confirmNo() { document.getElementById('confirmOverlay').classList.remov
 
 // ===== SETTINGS =====
 function openSettings() {
+  window._addingKey = null;
+  window._addingFixed = false;
   renderSettings();
   document.getElementById('settingsModal').classList.add('open');
 }
 function closeSettings() { document.getElementById('settingsModal').classList.remove('open'); }
 
 function renderSettings() {
+  const ak = window._addingKey;
+  const af = window._addingFixed;
   const s = document.getElementById('settingsContent');
-  s.innerHTML = `
-    ${settingsList('支出カテゴリ', data.expCats, 'expCat')}
-    ${settingsList('収入カテゴリ', data.incCats, 'incCat')}
-    ${settingsList('支払い方法', data.payMethods, 'pay')}
-    ${fixedList()}
-    ${budgetSection()}
-  `;
+  s.innerHTML =
+    settingsList('支出カテゴリ', data.expCats, 'expCat', ak) +
+    settingsList('収入カテゴリ', data.incCats, 'incCat', ak) +
+    settingsList('支払い方法', data.payMethods, 'pay', ak) +
+    fixedList(af) +
+    budgetSection();
+  if (ak) { const el = document.getElementById('newSettingInp'); if(el) el.focus(); }
+  if (af) { const el = document.getElementById('fx_amount'); if(el) el.focus(); }
 }
 
-function settingsList(title, arr, key) {
+function settingsList(title, arr, key, addingKey) {
   const items = arr.map((v,i) => `
     <div class="setting-item">
       <div class="setting-item-name">${v}</div>
@@ -829,10 +941,18 @@ function settingsList(title, arr, key) {
         <button class="s-btn del" onclick="deleteSettingItem('${key}',${i})">削除</button>
       </div>
     </div>`).join('');
+  const inlineForm = addingKey === key ? `
+    <div style="padding:10px 14px;border-top:1px solid var(--border);background:var(--surface2);">
+      <div style="display:flex;gap:8px;align-items:center;">
+        <input class="inp" type="text" id="newSettingInp" placeholder="名前を入力" style="flex:1;">
+        <button class="import-btn" onclick="submitAddSettingItem()">追加</button>
+        <button class="s-btn" onclick="cancelAddSetting()">✕</button>
+      </div>
+    </div>` : `<button class="add-setting-btn" onclick="addSettingItem('${key}')">＋ 追加</button>`;
   return `<div class="settings-section">
     <div class="settings-sec-title">${title}</div>
     ${items}
-    <button class="add-setting-btn" onclick="addSettingItem('${key}','${title}')">＋ 追加</button>
+    ${inlineForm}
   </div>`;
 }
 
@@ -840,41 +960,38 @@ function deleteSettingItem(key, idx) {
   if (key==='expCat') data.expCats.splice(idx,1);
   else if (key==='incCat') data.incCats.splice(idx,1);
   else if (key==='pay') data.payMethods.splice(idx,1);
+  else if (key==='farmExpCat') data.farmExpCats.splice(idx,1);
+  else if (key==='farmIncCat') data.farmIncCats.splice(idx,1);
   save(); renderSettings();
 }
 
-function addSettingItem(key, title) {
-  openSimpleInputModal(title + 'を追加', '名前を入力', (v) => {
-    if (key==='expCat') data.expCats.push(v);
-    else if (key==='incCat') data.incCats.push(v);
-    else if (key==='pay') data.payMethods.push(v);
-    save(); renderSettings();
-  });
+function addSettingItem(key) {
+  window._addingKey = key;
+  window._addingFixed = false;
+  renderSettings();
 }
 
-function openSimpleInputModal(title, placeholder, cb) {
-  document.getElementById('editModalTitle').textContent = title;
-  document.getElementById('editModalContent').innerHTML = `
-    <div class="form-row">
-      <input class="inp" type="text" id="simpleInp" placeholder="${placeholder}" style="font-size:16px;">
-    </div>
-    <button class="modal-btn" onclick="submitSimpleInput()">追加する</button>
-    <button class="modal-btn-sec" onclick="closeEditModal()">キャンセル</button>
-  `;
-  window._simpleInputCb = cb;
-  document.getElementById('editModal').classList.add('open');
-  setTimeout(() => document.getElementById('simpleInp').focus(), 100);
+function cancelAddSetting() {
+  window._addingKey = null;
+  renderSettings();
 }
 
-function submitSimpleInput() {
-  const v = document.getElementById('simpleInp').value.trim();
+function submitAddSettingItem() {
+  const el = document.getElementById('newSettingInp');
+  if (!el) return;
+  const v = el.value.trim();
   if (!v) return;
-  closeEditModal();
-  if (window._simpleInputCb) window._simpleInputCb(v);
-  window._simpleInputCb = null;
+  const key = window._addingKey;
+  if (key==='expCat') data.expCats.push(v);
+  else if (key==='incCat') data.incCats.push(v);
+  else if (key==='pay') data.payMethods.push(v);
+  else if (key==='farmExpCat') data.farmExpCats.push(v);
+  else if (key==='farmIncCat') data.farmIncCats.push(v);
+  window._addingKey = null;
+  save(); renderSettings();
 }
 
-function fixedList() {
+function fixedList(showForm) {
   const items = data.fixed.length === 0
     ? '<div style="padding:12px 14px;font-size:13px;color:var(--text3);">まだ登録がありません</div>'
     : data.fixed.map((f,i) => `
@@ -887,56 +1004,65 @@ function fixedList() {
           <button class="s-btn del" onclick="deleteFixed(${i})">削除</button>
         </div>
       </div>`).join('');
+  const form = showForm ? `
+    <div style="padding:12px 14px;border-top:1px solid var(--border);background:var(--surface2);">
+      <div class="form-row">
+        <label class="lbl">カテゴリ</label>
+        <select class="inp" id="fx_cat">${data.expCats.map(c=>`<option>${c}</option>`).join('')}</select>
+      </div>
+      <div class="form-row">
+        <label class="lbl">店名・サービス名</label>
+        <input class="inp" type="text" id="fx_shop" placeholder="例：Netflix">
+      </div>
+      <div class="form-row">
+        <label class="lbl">品目</label>
+        <input class="inp" type="text" id="fx_item" placeholder="例：サブスク">
+      </div>
+      <div class="form-row">
+        <label class="lbl">金額</label>
+        <div class="inp-amount-wrap"><span class="yen">¥</span>
+          <input class="inp" type="number" id="fx_amount" placeholder="0" min="0">
+        </div>
+      </div>
+      <div class="form-row">
+        <label class="lbl">支払い方法</label>
+        <select class="inp" id="fx_pay">${data.payMethods.map(p=>`<option>${p}</option>`).join('')}</select>
+      </div>
+      <div class="form-row">
+        <label class="lbl">親父カード</label>
+        <select class="inp" id="fx_otosan">
+          <option value="0">いいえ</option>
+          <option value="1">はい（自分の支出に含めない）</option>
+        </select>
+      </div>
+      <div style="display:flex;gap:8px;">
+        <button class="modal-btn" style="flex:1" onclick="submitAddFixed()">追加する</button>
+        <button class="modal-btn-sec" style="flex:1;margin-top:0" onclick="cancelAddFixed()">キャンセル</button>
+      </div>
+    </div>` : `<button class="add-setting-btn" onclick="addFixed()">＋ 追加</button>`;
   return `<div class="settings-section">
     <div class="settings-sec-title">固定費リスト</div>
     ${items}
-    <button class="add-setting-btn" onclick="addFixed()">＋ 追加</button>
+    ${form}
   </div>`;
 }
 
 function deleteFixed(i) { data.fixed.splice(i,1); save(); renderSettings(); }
 
 function addFixed() {
-  document.getElementById('editModalTitle').textContent = '固定費を追加';
-  document.getElementById('editModalContent').innerHTML = `
-    <div class="form-row">
-      <label class="lbl">カテゴリ</label>
-      <select class="inp" id="fx_cat">${data.expCats.map(c=>`<option>${c}</option>`).join('')}</select>
-    </div>
-    <div class="form-row">
-      <label class="lbl">店名・サービス名</label>
-      <input class="inp" type="text" id="fx_shop" placeholder="例：Netflix">
-    </div>
-    <div class="form-row">
-      <label class="lbl">品目</label>
-      <input class="inp" type="text" id="fx_item" placeholder="例：サブスク">
-    </div>
-    <div class="form-row">
-      <label class="lbl">金額</label>
-      <div class="inp-amount-wrap"><span class="yen">¥</span>
-        <input class="inp" type="number" id="fx_amount" placeholder="0" min="0">
-      </div>
-    </div>
-    <div class="form-row">
-      <label class="lbl">支払い方法</label>
-      <select class="inp" id="fx_pay">${data.payMethods.map(p=>`<option>${p}</option>`).join('')}</select>
-    </div>
-    <div class="form-row">
-      <label class="lbl">親父カード</label>
-      <select class="inp" id="fx_otosan">
-        <option value="0">いいえ</option>
-        <option value="1">はい（自分の支出に含めない）</option>
-      </select>
-    </div>
-    <button class="modal-btn" onclick="submitAddFixed()">追加する</button>
-    <button class="modal-btn-sec" onclick="closeEditModal()">キャンセル</button>
-  `;
-  document.getElementById('editModal').classList.add('open');
+  window._addingKey = null;
+  window._addingFixed = true;
+  renderSettings();
+}
+
+function cancelAddFixed() {
+  window._addingFixed = false;
+  renderSettings();
 }
 
 function submitAddFixed() {
   const amount = parseInt(document.getElementById('fx_amount').value) || 0;
-  if (amount <= 0) { alert('金額を入力してください'); return; }
+  if (amount <= 0) { showToast('金額を入力してください'); return; }
   data.fixed.push({
     id: uid(),
     cat: document.getElementById('fx_cat').value,
@@ -946,7 +1072,51 @@ function submitAddFixed() {
     pay: document.getElementById('fx_pay').value,
     otosan: document.getElementById('fx_otosan').value === '1'
   });
-  save(); closeEditModal(); renderSettings(); showToast('固定費を追加しました');
+  window._addingFixed = false;
+  save(); renderSettings(); showToast('固定費を追加しました');
+}
+
+
+function farmSettings() {
+  const ak = window._addingKey;
+  const expItems = data.farmExpCats.map((v,i) => `
+    <div class="setting-item">
+      <div class="setting-item-name">${v}</div>
+      <div class="setting-item-actions">
+        <button class="s-btn del" onclick="deleteSettingItem('farmExpCat',${i})">削除</button>
+      </div>
+    </div>`).join('');
+  const incItems = data.farmIncCats.map((v,i) => `
+    <div class="setting-item">
+      <div class="setting-item-name">${v}</div>
+      <div class="setting-item-actions">
+        <button class="s-btn del" onclick="deleteSettingItem('farmIncCat',${i})">削除</button>
+      </div>
+    </div>`).join('');
+  const expForm = ak==='farmExpCat' ? `
+    <div style="padding:10px 14px;border-top:1px solid var(--border);background:var(--surface2);">
+      <div style="display:flex;gap:8px;align-items:center;">
+        <input class="inp" type="text" id="newSettingInp" placeholder="名前を入力" style="flex:1;">
+        <button class="import-btn" onclick="submitAddSettingItem()">追加</button>
+        <button class="s-btn" onclick="cancelAddSetting()">✕</button>
+      </div>
+    </div>` : `<button class="add-setting-btn" onclick="addSettingItem('farmExpCat')">＋ 追加</button>`;
+  const incForm = ak==='farmIncCat' ? `
+    <div style="padding:10px 14px;border-top:1px solid var(--border);background:var(--surface2);">
+      <div style="display:flex;gap:8px;align-items:center;">
+        <input class="inp" type="text" id="newSettingInp" placeholder="名前を入力" style="flex:1;">
+        <button class="import-btn" onclick="submitAddSettingItem()">追加</button>
+        <button class="s-btn" onclick="cancelAddSetting()">✕</button>
+      </div>
+    </div>` : `<button class="add-setting-btn" onclick="addSettingItem('farmIncCat')">＋ 追加</button>`;
+  return `<div class="settings-section">
+    <div class="settings-sec-title" style="background:var(--farm-light);color:var(--farm2);">🌱 農業支出カテゴリ</div>
+    ${expItems}${expForm}
+  </div>
+  <div class="settings-section">
+    <div class="settings-sec-title" style="background:var(--farm-light);color:var(--farm2);">🌱 農業収入カテゴリ</div>
+    ${incItems}${incForm}
+  </div>`;
 }
 
 function budgetSection() {
@@ -982,6 +1152,235 @@ function showToast(msg) {
   clearTimeout(t._timer);
   t._timer = setTimeout(() => t.style.opacity = '0', 1800);
 }
+
+
+// ===== FARM TAB =====
+let farmInputType = 'expense';
+let farmViewYear = new Date().getFullYear();
+let farmViewMonth = new Date().getMonth();
+let selFarmExpCat = '';
+let selFarmIncCat = '';
+let selFarmPay = '';
+
+function initFarmTab() {
+  document.getElementById('fExpDate').value = today();
+  document.getElementById('fIncDate').value = today();
+  renderFarmExpCatGrid();
+  renderFarmIncCatGrid();
+  renderFarmPayRow();
+  renderFarmMonth();
+}
+
+function setFarmType(t) {
+  farmInputType = t;
+  document.getElementById('fBtnExp').className = 'type-btn' + (t==='expense'?' exp-active':'');
+  document.getElementById('fBtnInc').className = 'type-btn' + (t==='income'?' inc-active':'');
+  document.getElementById('farmExpForm').style.display = t==='expense'?'':'none';
+  document.getElementById('farmIncForm').style.display = t==='income'?'':'none';
+}
+
+function renderFarmExpCatGrid() {
+  document.getElementById('fExpCatGrid').innerHTML = data.farmExpCats.map(c =>
+    `<div class="chip${c===selFarmExpCat?' sel':''}" onclick="selFEC('${c}')">${c}</div>`
+  ).join('');
+}
+function selFEC(c) { selFarmExpCat = c; renderFarmExpCatGrid(); }
+
+function renderFarmIncCatGrid() {
+  const g = document.getElementById('fIncCatGrid');
+  if (!g) return;
+  g.innerHTML = data.farmIncCats.map(c =>
+    `<div class="chip${c===selFarmIncCat?' sel':''}" onclick="selFIC('${c}')">${c}</div>`
+  ).join('');
+}
+function selFIC(c) { selFarmIncCat = c; renderFarmIncCatGrid(); }
+
+function renderFarmPayRow() {
+  document.getElementById('fExpPayRow').innerHTML = data.payMethods.map(p =>
+    `<div class="pay-chip${p===selFarmPay?' sel':''}" onclick="selFP('${p}')">${p}</div>`
+  ).join('');
+}
+function selFP(p) { selFarmPay = p; renderFarmPayRow(); }
+
+function submitFarmExp() {
+  const date = document.getElementById('fExpDate').value;
+  const amount = parseInt(document.getElementById('fExpAmount').value) || 0;
+  const item = document.getElementById('fExpItem').value.trim();
+  if (!date || !selFarmExpCat || amount <= 0) { showToast('日付・カテゴリ・金額は必須です'); return; }
+  data.farmExpenses.push({ id:uid(), date, cat:selFarmExpCat, item, amount, pay:selFarmPay });
+  save();
+  document.getElementById('fExpAmount').value = '';
+  document.getElementById('fExpItem').value = '';
+  renderFarmMonth();
+  showToast('追加しました');
+}
+
+function submitFarmInc() {
+  const date = document.getElementById('fIncDate').value;
+  const amount = parseInt(document.getElementById('fIncAmount').value) || 0;
+  const item = document.getElementById('fIncItem').value.trim();
+  if (!date || !selFarmIncCat || amount <= 0) { showToast('日付・カテゴリ・金額は必須です'); return; }
+  data.farmIncomes.push({ id:uid(), date, cat:selFarmIncCat, item, amount });
+  save();
+  document.getElementById('fIncAmount').value = '';
+  document.getElementById('fIncItem').value = '';
+  renderFarmMonth();
+  showToast('追加しました');
+}
+
+function changeFarmMonth(d) {
+  farmViewMonth += d;
+  if (farmViewMonth < 0) { farmViewMonth = 11; farmViewYear--; }
+  if (farmViewMonth > 11) { farmViewMonth = 0; farmViewYear++; }
+  renderFarmMonth();
+}
+
+function renderFarmMonth() {
+  const ym = `${farmViewYear}-${String(farmViewMonth+1).padStart(2,'0')}`;
+  document.getElementById('farmMonthLbl').textContent = `${farmViewYear}年 ${farmViewMonth+1}月`;
+
+  const exps = (data.farmExpenses||[]).filter(e=>e.date.startsWith(ym));
+  const incs = (data.farmIncomes||[]).filter(i=>i.date.startsWith(ym));
+  const totalExp = exps.reduce((s,e)=>s+e.amount,0);
+  const totalInc = incs.reduce((s,i)=>s+i.amount,0);
+  const bal = totalInc - totalExp;
+
+  document.getElementById('fSumInc').textContent = fmt(totalInc);
+  document.getElementById('fSumExp').textContent = fmt(totalExp);
+  const balEl = document.getElementById('fSumBal');
+  balEl.textContent = fmtBal(bal);
+  balEl.style.color = bal >= 0 ? 'var(--olive2)' : 'var(--red)';
+
+  // 累計
+  const allExp = (data.farmExpenses||[]).reduce((s,e)=>s+e.amount,0);
+  const allInc = (data.farmIncomes||[]).reduce((s,i)=>s+i.amount,0);
+  const allBal = allInc - allExp;
+  document.getElementById('fTotalExp').textContent = fmt(allExp);
+  document.getElementById('fTotalInc').textContent = fmt(allInc);
+  const fTotalBalEl = document.getElementById('fTotalBal');
+  fTotalBalEl.textContent = fmtBal(allBal);
+
+  // 支出グループ
+  const expDiv = document.getElementById('farmExpGroups');
+  if (exps.length === 0) {
+    expDiv.innerHTML = '<div style="text-align:center;padding:20px;color:var(--text3);font-size:13px;">支出なし</div>';
+  } else {
+    expDiv.innerHTML = data.farmExpCats.map(cat => {
+      const recs = exps.filter(e=>e.cat===cat).sort((a,b)=>a.date.localeCompare(b.date));
+      if (!recs.length) return '';
+      const total = recs.reduce((s,e)=>s+e.amount,0);
+      const rows = recs.map(e=>`
+        <div class="record-item">
+          <div class="rec-date">${parseInt(e.date.slice(8))}</div>
+          <div class="rec-info"><div class="rec-shop">${e.item||'—'}</div></div>
+          ${e.pay?`<div class="rec-pay">${e.pay}</div>`:''}
+          <div class="rec-amount">${fmt(e.amount)}</div>
+          <div class="rec-actions">
+            <div class="act-btn" onclick="openEditFarmExp('${e.id}')">✏</div>
+            <div class="act-btn del" onclick="deleteFarmRecord('expense','${e.id}')">✕</div>
+          </div>
+        </div>`).join('');
+      return `<div class="cat-group">
+        <div class="cat-g-header"><div class="cat-g-top"><div class="cat-g-name">${cat}</div><div class="cat-g-amounts"><span class="actual">${fmt(total)}</span></div></div></div>
+        ${rows}</div>`;
+    }).join('');
+  }
+
+  // 収入グループ
+  const incDiv = document.getElementById('farmIncGroups');
+  if (incs.length === 0) {
+    incDiv.innerHTML = '<div style="text-align:center;padding:20px;color:var(--text3);font-size:13px;">収入なし</div>';
+  } else {
+    incDiv.innerHTML = data.farmIncCats.map(cat => {
+      const recs = incs.filter(i=>i.cat===cat).sort((a,b)=>a.date.localeCompare(b.date));
+      if (!recs.length) return '';
+      const total = recs.reduce((s,i)=>s+i.amount,0);
+      const rows = recs.map(i=>`
+        <div class="record-item">
+          <div class="rec-date">${parseInt(i.date.slice(8))}</div>
+          <div class="rec-info"><div class="rec-shop">${i.item||'—'}</div></div>
+          <div class="rec-amount pos">${fmt(i.amount)}</div>
+          <div class="rec-actions">
+            <div class="act-btn" onclick="openEditFarmInc('${i.id}')">✏</div>
+            <div class="act-btn del" onclick="deleteFarmRecord('income','${i.id}')">✕</div>
+          </div>
+        </div>`).join('');
+      return `<div class="inc-group">
+        <div class="inc-g-header"><div class="inc-g-name">${cat}</div><div class="inc-g-total">${fmt(total)}</div></div>
+        ${rows}</div>`;
+    }).join('');
+  }
+}
+
+function openEditFarmExp(id) {
+  const e = (data.farmExpenses||[]).find(x=>x.id===id);
+  if (!e) return;
+  editingId = id; editingType = 'farmExpense';
+  document.getElementById('editModalTitle').textContent = '農業支出を編集';
+  document.getElementById('editModalContent').innerHTML = `
+    <div class="form-row"><label class="lbl">日付</label><input class="inp" type="date" id="ed_date" value="${e.date}"></div>
+    <div class="form-row"><label class="lbl">カテゴリ</label>
+      <select class="inp" id="ed_cat">${data.farmExpCats.map(c=>`<option${c===e.cat?' selected':''}>${c}</option>`).join('')}</select></div>
+    <div class="form-row"><label class="lbl">品目・店名</label><input class="inp" type="text" id="ed_item" value="${e.item||''}"></div>
+    <div class="form-row"><label class="lbl">金額</label>
+      <div class="inp-amount-wrap"><span class="yen">¥</span><input class="inp" type="number" id="ed_amount" value="${e.amount}"></div></div>
+    <div class="form-row"><label class="lbl">支払い方法</label>
+      <select class="inp" id="ed_pay">${data.payMethods.map(p=>`<option${p===e.pay?' selected':''}>${p}</option>`).join('')}</select></div>
+    <button class="modal-btn" onclick="saveEditFarmExp()">保存する</button>
+    <button class="modal-btn-sec" onclick="closeEditModal()">キャンセル</button>
+  `;
+  document.getElementById('editModal').classList.add('open');
+}
+
+function saveEditFarmExp() {
+  const e = data.farmExpenses.find(x=>x.id===editingId);
+  if (!e) return;
+  e.date = document.getElementById('ed_date').value;
+  e.cat = document.getElementById('ed_cat').value;
+  e.item = document.getElementById('ed_item').value.trim();
+  e.amount = parseInt(document.getElementById('ed_amount').value)||0;
+  e.pay = document.getElementById('ed_pay').value;
+  save(); closeEditModal(); renderFarmMonth(); showToast('更新しました');
+}
+
+function openEditFarmInc(id) {
+  const i = (data.farmIncomes||[]).find(x=>x.id===id);
+  if (!i) return;
+  editingId = id; editingType = 'farmIncome';
+  document.getElementById('editModalTitle').textContent = '農業収入を編集';
+  document.getElementById('editModalContent').innerHTML = `
+    <div class="form-row"><label class="lbl">日付</label><input class="inp" type="date" id="ed_date" value="${i.date}"></div>
+    <div class="form-row"><label class="lbl">カテゴリ</label>
+      <select class="inp" id="ed_cat">${data.farmIncCats.map(c=>`<option${c===i.cat?' selected':''}>${c}</option>`).join('')}</select></div>
+    <div class="form-row"><label class="lbl">品目・内容</label><input class="inp" type="text" id="ed_item" value="${i.item||''}"></div>
+    <div class="form-row"><label class="lbl">金額</label>
+      <div class="inp-amount-wrap"><span class="yen">¥</span><input class="inp" type="number" id="ed_amount" value="${i.amount}"></div></div>
+    <button class="modal-btn" onclick="saveEditFarmInc()">保存する</button>
+    <button class="modal-btn-sec" onclick="closeEditModal()">キャンセル</button>
+  `;
+  document.getElementById('editModal').classList.add('open');
+}
+
+function saveEditFarmInc() {
+  const i = data.farmIncomes.find(x=>x.id===editingId);
+  if (!i) return;
+  i.date = document.getElementById('ed_date').value;
+  i.cat = document.getElementById('ed_cat').value;
+  i.item = document.getElementById('ed_item').value.trim();
+  i.amount = parseInt(document.getElementById('ed_amount').value)||0;
+  save(); closeEditModal(); renderFarmMonth(); showToast('更新しました');
+}
+
+function deleteFarmRecord(type, id) {
+  document.getElementById('confirmMsg').textContent = 'このレコードを削除しますか？';
+  confirmCb = () => {
+    if (type==='expense') data.farmExpenses = data.farmExpenses.filter(e=>e.id!==id);
+    else data.farmIncomes = data.farmIncomes.filter(i=>i.id!==id);
+    save(); renderFarmMonth(); showToast('削除しました');
+  };
+  document.getElementById('confirmOverlay').classList.add('open');
+}
+
 
 // ===== INIT =====
 initInputTab();
