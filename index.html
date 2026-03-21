@@ -228,7 +228,10 @@ select.inp { appearance:none; }
 <div class="app">
   <div class="header">
     <div class="logo">kakeibo<span>家計簿</span></div>
-    <div class="settings-btn" onclick="openSettings()">⚙</div>
+    <div style="display:flex;align-items:center;gap:8px;">
+      <a href="https://knworks-droid.github.io/asset/" style="padding:6px 11px;background:rgba(255,255,255,0.15);border:1px solid rgba(255,255,255,0.25);border-radius:8px;color:rgba(255,255,255,0.9);font-size:11px;font-weight:700;text-decoration:none;letter-spacing:0.3px;font-family:'Zen Kaku Gothic New',sans-serif;">資産ログ ↗</a>
+      <div class="settings-btn" onclick="openSettings()">⚙</div>
+    </div>
   </div>
   <div class="tabs">
     <div class="tab active" id="tab0" onclick="showTab(0)">入力</div>
@@ -531,7 +534,7 @@ let otosanOn = false;
 let selectedExpCat = '';
 let selectedIncCat = '';
 let selectedPay = '';
-let viewYear = new Date().getFullYear();
+const _now = new Date(); let viewYear = _now.getMonth() < 3 ? _now.getFullYear() - 1 : _now.getFullYear();
 let viewMonth = new Date().getMonth(); // 0-indexed
 let confirmCb = null;
 let editingId = null;
@@ -755,17 +758,19 @@ function renderMonth() {
 function changeYear(d) { viewYear += d; renderYear(); }
 
 function renderYear() {
-  document.getElementById('yearLbl').textContent = `${viewYear}年`;
+  document.getElementById('yearLbl').textContent = `${viewYear}年度`;
   let totalInc=0, totalExp=0, totalOtosan=0;
   const months = [];
-  for (let m=0;m<12;m++) {
-    const ym = `${viewYear}-${String(m+1).padStart(2,'0')}`;
+  for (let i=0;i<12;i++) {
+    const mo = (i + 3) % 12 + 1; // 4,5,...,12,1,2,3
+    const yr = mo >= 4 ? viewYear : viewYear + 1;
+    const ym = `${yr}-${String(mo).padStart(2,'0')}`;
     const exps = data.expenses.filter(e=>e.date.startsWith(ym));
     const incs = data.incomes.filter(i=>i.date.startsWith(ym));
     const inc = incs.reduce((s,i)=>s+i.amount,0);
     const exp = exps.filter(e=>!e.otosan).reduce((s,e)=>s+e.amount,0);
     const ots = exps.filter(e=>e.otosan).reduce((s,e)=>s+e.amount,0);
-    months.push({m:m+1, inc, exp, ots});
+    months.push({m:mo, yr, inc, exp, ots});
     totalInc+=inc; totalExp+=exp; totalOtosan+=ots;
   }
   document.getElementById('annualExp').textContent = fmt(totalExp);
@@ -784,17 +789,17 @@ function renderYear() {
         ${m.inc>0?`<div class="b-inc" style="height:${iH}px"></div>`:''}
         ${m.exp>0?`<div class="b-exp" style="height:${eH}px"></div>`:''}
       </div>
-      <div class="b-month">${m.m}</div>
+      <div class="b-month">${m.m}月</div>
     </div>`;
   }).join('');
 
   // Table
   const now = new Date();
   document.getElementById('yearTableBody').innerHTML = months.map(m => {
-    const isFuture = viewYear > now.getFullYear() || (viewYear===now.getFullYear() && m.m > now.getMonth()+1);
+    const isFuture = m.yr > now.getFullYear() || (m.yr===now.getFullYear() && m.m > now.getMonth()+1);
     if (isFuture && m.inc===0 && m.exp===0) return `<div class="yt-row"><span>${m.m}月</span><span style="color:var(--text3)">—</span><span style="color:var(--text3)">—</span><span style="color:var(--text3)">—</span></div>`;
     const bal = m.inc - m.exp;
-    return `<div class="yt-row" onclick="jumpToMonth(${m.m-1})">
+    return `<div class="yt-row" onclick="jumpToMonthYear(${m.m-1},${m.yr})">
       <span>${m.m}月</span>
       <span class="pos">${m.inc>0?fmt(m.inc):'—'}</span>
       <span class="neg">${m.exp>0?fmt(m.exp):'—'}</span>
@@ -813,20 +818,32 @@ function jumpToMonth(m) {
   viewMonth = m;
   showTab(1);
 }
+function jumpToMonthYear(m, y) {
+  viewMonth = m;
+  viewYear = y;
+  showTab(1);
+}
 
 function exportCSV() {
   const rows = [['日付','種別','カテゴリ','店名/メモ','品目','金額','支払い方法','親父カード']];
-  data.expenses.filter(e=>e.date.startsWith(viewYear+'')).forEach(e=>{
+  // 年度: viewYear年4月 〜 (viewYear+1)年3月
+  const fiscalMonths = [];
+  for (let i=0;i<12;i++) {
+    const mo = (i+3)%12+1;
+    const yr = mo>=4 ? viewYear : viewYear+1;
+    fiscalMonths.push(`${yr}-${String(mo).padStart(2,'0')}`);
+  }
+  data.expenses.filter(e=>fiscalMonths.some(ym=>e.date.startsWith(ym))).forEach(e=>{
     rows.push([e.date,'支出',e.cat,e.shop||'',e.item||'',e.amount,e.pay||'',e.otosan?'Yes':'']);
   });
-  data.incomes.filter(i=>i.date.startsWith(viewYear+'')).forEach(i=>{
+  data.incomes.filter(i=>fiscalMonths.some(ym=>i.date.startsWith(ym))).forEach(i=>{
     rows.push([i.date,'収入',i.cat,i.memo||'','',i.amount,'','']);
   });
   const csv = rows.map(r=>r.map(v=>`"${String(v).replace(/"/g,'""')}"`).join(',')).join('\n');
   const blob = new Blob(['\uFEFF'+csv],{type:'text/csv;charset=utf-8'});
   const a = document.createElement('a');
   a.href = URL.createObjectURL(blob);
-  a.download = `kakeibo_${viewYear}.csv`;
+  a.download = `kakeibo_${viewYear}年度.csv`;
   a.click();
 }
 
